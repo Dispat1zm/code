@@ -1,7 +1,7 @@
 import type { PostsRepository } from "./posts.repository";
 import { Context, Hono, type TypedResponse } from "hono";
 import { IDParamSchema, type ApplicationEnviroment, type ApplicationResult, type IDParamType } from "../application.types";
-import { type PostType, postCreateSchema} from "./posts.types";
+import { type PostCreateType, type PostType, postCreateSchema} from "./posts.types";
 import { ApplicationValidator } from "../application.validator";
 
 export class PostsController {

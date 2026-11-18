@@ -1,3 +1,4 @@
+import type { Hono } from "hono";
 import { PostsController } from "./posts.controller";
 import { PostsRepository } from "./posts.repository";
 import { Database } from "bun:sqlite";
