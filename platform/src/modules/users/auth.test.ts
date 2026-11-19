@@ -94,19 +94,17 @@ describe("Авторизация", () => {
         });
 
         expect(response.status).toBe(401);
+        expect(await response.json()).toMatchObject({
+            success: false,
+        });
     });
     test("Без токена возвращает 401", async() => {
-        await client.post("/api/auth/register", account);
-        const response = await client.post("/api/auth/register", account);
-        const result = tokenResponseSchema.parse(await response.json());
-        const response2 = await client.post("/api/auth/me", {}, result.data.token);
-        //const response = await client.post("/api/auth/me", {});
+        const response = await client.me();
 
-        expect(response2.status).toBe(401);
+        expect(response.status).toBe(401);
     });
     test("Некорректный токен возвращает 401", async() => {
-        await client.post("/api/auth/register", account);
-        const response = await client.post("/api/auth/me", {token: "kjhaisdfh819h192rf4389fqwi"});
+        const response = await client.me("adsd212313");
 
         expect(response.status).toBe(401);
     });
